@@ -87,7 +87,7 @@ class Game {
     createStone() {
         const randomX = Math.floor(Math.random() * this.canvas.width);
         const positionY = 0;
-        const hailstone = new Hailstone(randomX, positionY, 20, 5, this.hailstoneRenderCallback);
+        const hailstone = new Hailstone(randomX, positionY, 10, 5, this.hailstoneRenderCallback);
         this.hailstones.push(hailstone);
     }
 
@@ -135,6 +135,7 @@ class Game {
         return false;
     }
 
+    // xác định va chạm giữa 2 hình chữ nhật.
     isCollision(rect1, rect2) {
         let distX = (rect1.x + (rect1.w/2)) - (rect2.x + (rect2.w)/2);
         if (distX < 0)
@@ -160,7 +161,7 @@ class Game {
         let game_loop_time = 20;
         this.window.addEventListener("keydown", this.controlDirection.bind(this));
         this.interval = setInterval(this.repeatRender.bind(this), game_loop_time);
-        setInterval(this.createStone.bind(this), 500);
+        setInterval(this.createStone.bind(this), 250);
     }
 
 
